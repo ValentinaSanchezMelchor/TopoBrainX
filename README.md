@@ -1,6 +1,9 @@
-# TopoBrainX
+## TopoBrainX
 This repository will include the to experiment to transform fMRI (or any timeseries data) into a combinatorial complex.
 
+## Project Structure
+
+```text
 TopoBrainX/
 │
 ├── data/
@@ -22,3 +25,13 @@ TopoBrainX/
 ├── utils/                 ← Helper functions (plotting, loading, etc.)
 ├── README.md              ← Project overview
 └── .gitignore             ← Ignore checkpoints, processed data
+```
+---
+## Description
+
+**TopoBrainX** is a research codebase to:
+- Extract relevant higher-order interactions from fMRI timeseries (NetSim/HCP).
+- Apply Kalman filtering and similarity-based pruning.
+- Construct combinatorial complex representations.
+- Compute O-information / S-information.
+- Visualize and interpret toy examples for the *"Human Brain as a Combinatorial Complex"* paper.
