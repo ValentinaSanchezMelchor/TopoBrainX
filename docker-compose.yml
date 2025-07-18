@@ -1,0 +1,11 @@
+version: '3.9'           # Versión de docker-compose
+services:
+  web:                   # Nombre del servicio
+    build: .             # Construye la imagen usando el Dockerfile en el root
+    ports:
+      - "8000:8000"      # Expone el puerto 5000 local al 5000 del contenedor
+    volumes:
+      - ./app:/app/app   # Mapea los archivos locales para hot reload (dev)
+    environment:
+      - FLASK_ENV=development  # Modo desarrollo
+      - FLASK_APP=app:create_app
