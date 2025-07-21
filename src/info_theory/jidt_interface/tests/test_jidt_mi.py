@@ -8,8 +8,7 @@ import os
 os.environ['OMP_NUM_THREADS'] = '1'
 
 # Path to JIDT jar file
-jidt_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "jidt_interface", "infodynamics.jar"))
-
+jidt_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "infodynamics.jar"))
 # Start JVM
 if not jpype.isJVMStarted():
     jpype.startJVM(jpype.getDefaultJVMPath(),
