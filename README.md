@@ -7,24 +7,39 @@ This repository will include the to experiment to transform fMRI (or any timeser
 TopoBrainX/
 │
 ├── data/
-│   ├── raw/               ← NetSim files go here
-│   └── processed/         ← Kalman-filtered or preprocessed timeseries
+│   ├── NetSim/                  ← NetSim simulation .mat files
+│   └── processed/               ← Kalman/AR filtered or preprocessed time series
 │
-├── notebooks/             ← Exploratory analysis and figures
-├── scripts/               ← Individual experiment stages
+├── notebooks/
+│   └── explore_netsim.ipynb     ← Visualization of time series + ground-truth net
+│
+├── scripts/
+│   ├── run_jidt_metrics.py      ← Runs O-info & S-info computation using JIDT
+│   └── visualize_results.py     ← Plots for info measures and comparisons
+│
 ├── results/
-│   ├── figures/           ← Output visualizations
-│   └── metrics/           ← O-info / S-info values, etc.
+│   ├── figures/                 ← Visualizations of connectivity, synergy, etc.
+│   └── metrics/                 ← Computed info-theoretic metrics per subject
 │
 ├── src/
-│   ├── info_theory/       ← JIDT-based information metrics
-│   ├── preprocessing/     ← Kalman filter, z-scoring, etc.
-│   ├── subset_selection/  ← Similarity / hashing to prune candidate sets
-│   └── complex_builder/   ← Combinatorial complex construction
+│   ├── info_theory/
+│   │   ├── jidt_interface/          ← JPype setup + JIDT wrapper functions
+│   │   ├── oinfo_sinfo_computation/ ← Core logic for O-info/S-info computation
+│   │   └── tests/                   ← Unit tests for metrics
+│   │
+│   ├── preprocessing/
+│   │   ├── kalman_filter.py        ← (Optional) Temporal filtering
+│   │   └── zscore_normalize.py     ← Normalization routines
+│   │
+│   ├── complex_builder/            ← (Later) Construction of combinatorial complex
+│   └── subset_selection/           ← (Skipped for now) Similarity hashing etc.
 │
-├── utils/                 ← Helper functions (plotting, loading, etc.)
-├── README.md              ← Project overview
-└── .gitignore             ← Ignore checkpoints, processed data
+├── utils/
+│   └── loader.py               ← NetSim data loader (load_ts_and_net)
+│
+├── requirements.txt           ← Include scipy, numpy, matplotlib, jpype1, etc.
+├── README.md                  ← Project overview + usage
+└── .gitignore                 ← Ignore processed data, checkpoints, etc.
 ```
 ---
 ## Description
