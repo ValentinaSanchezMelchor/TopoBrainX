@@ -12,7 +12,7 @@ from itertools import combinations
 # ---- JVM Setup ----
 os.environ['OMP_NUM_THREADS'] = '1'
 jidt_path = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..", "..", "src", "info_theory", "jidt_interface", "infodynamics.jar")
+    os.path.join(os.path.dirname(__file__), "..", "dependencies", "info_theory", "jidt_interface", "infodynamics.jar")
 )
 if not jpype.isJVMStarted():
     jpype.startJVM(classpath=[jidt_path])

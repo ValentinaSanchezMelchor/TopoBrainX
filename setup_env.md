@@ -25,6 +25,6 @@ Download the JIDT .jar file from the official GitHub page:
 
 Then place the .jar file here:
 ```bash
-src/info_theory/jidt_interface/infodynamics.jar
+dependencies/info_theory/jidt_interface/infodynamics.jar
 ```
 

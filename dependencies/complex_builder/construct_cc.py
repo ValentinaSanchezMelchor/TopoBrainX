@@ -1,4 +1,4 @@
-# src/complex_builder/construct_cc.py
+# dependencies/complex_builder/construct_cc.py
 
 import json
 import os
