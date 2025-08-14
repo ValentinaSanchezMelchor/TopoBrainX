@@ -11,8 +11,8 @@ jidt_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "infod
 if not jpype.isJVMStarted():
     jpype.startJVM(classpath=[jidt_path])
 
-# ----- Load One Subject from NetSim -----
-mat = loadmat("data/NetSim/sims/sim1.mat")
+# ----- Load One Subject from netsim -----
+mat = loadmat("data/netsim/sims/sim1.mat")
 ts = mat["ts"]            # shape: (10000, 5)
 ts_subject = ts[0:200, :] # one subject: shape (200, 5)
 

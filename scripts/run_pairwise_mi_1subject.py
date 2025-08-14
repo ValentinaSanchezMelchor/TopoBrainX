@@ -1,4 +1,5 @@
 # scripts/metrics/run_pairwise_mi_1subject.py
+import sys
 
 import jpype
 import jpype.imports
@@ -8,33 +9,17 @@ from scipy.io import loadmat
 import os
 import json
 from itertools import combinations
+from common_scripts.common import jvm_setup, load_data
 
-# ---- JVM Setup ----
-os.environ['OMP_NUM_THREADS'] = '1'
-jidt_path = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..", "dependencies", "info_theory", "jidt_interface", "infodynamics.jar")
-)
-if not jpype.isJVMStarted():
-    jpype.startJVM(classpath=[jidt_path])
+# ---- Set up ----
 
-# ---- Load Data ----
-mat = loadmat("data/NetSim/sims/sim1.mat")
-ts = mat["ts"]
-Nsubjects = int(mat["Nsubjects"][0][0])
-Ntimepoints = int(mat["Ntimepoints"][0][0])
-Nnodes = int(mat["Nnodes"][0][0])
+subject_number = sys.argv[1]
+jvm_setup()
+mat, ts_subject = load_data(int(subject_number))
 
-print(f"[INFO] ts shape: {ts.shape}")
-print(f"[INFO] Nsubjects: {Nsubjects}, Ntimepoints: {Ntimepoints}, Nnodes: {Nnodes}")
-
-# ---- Choose One Subject ----
-subject_idx = 0  # You can change this
-start = subject_idx * Ntimepoints
-end = (subject_idx + 1) * Ntimepoints
-ts_subject = ts[start:end, :]  # shape (200, Nnodes)
-print(f"[INFO] Subject {subject_idx+1} time series shape: {ts_subject.shape}")
 
 # ---- MI Calculator ----
+Nnodes = int(mat["Nnodes"][0][0])
 MICalc = jpype.JClass("infodynamics.measures.continuous.gaussian.MutualInfoCalculatorMultiVariateGaussian")
 
 pairwise_mi = {}
@@ -51,7 +36,7 @@ for i, j in combinations(range(Nnodes), 2):
     print(f"Pair ({i}, {j}): MI = {mi_val:.6f}")
 
 # ---- Save Results ----
-output_path = f"results/metrics/subject_{subject_idx}_pairwise.json"
+output_path = f"results/metrics/subject_{subject_number}_pairwise.json"
 os.makedirs(os.path.dirname(output_path), exist_ok=True)
 with open(output_path, 'w') as f:
     json.dump(pairwise_mi, f, indent=2)
