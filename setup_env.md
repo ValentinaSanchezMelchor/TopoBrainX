@@ -1,6 +1,6 @@
 # TopoBrainX — Environment Setup Guide
 
-This guide explains how to set up the Python and Java environment for running the TopoBrainX project.
+This guide explains how to run the TopoBrainX project.
 
 ---
 
@@ -10,6 +10,14 @@ This guide explains how to set up the Python and Java environment for running th
 git clone https://github.com/ValentinaSanchezMelchor/TopoBrainX.git
 cd TopoBrainX
 ```
+## Docker: 
+
+1. install Docker
+2. run
+```bash
+docker compose up --build
+```
+ on the terminal
 
 ## Step 2: Create a Virtual Environment
 python3.11 -m venv .venv

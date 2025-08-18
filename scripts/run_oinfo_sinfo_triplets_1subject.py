@@ -1,7 +1,5 @@
 import jpype.imports
 from jpype.types import JArray, JDouble
-import numpy as np
-from scipy.io import loadmat
 from itertools import combinations
 import os
 import json

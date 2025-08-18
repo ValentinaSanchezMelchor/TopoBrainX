@@ -1,11 +1,13 @@
-version: '3.9'           # Versión de docker-compose
+version: "3.9"
+
 services:
-  web:                   # Nombre del servicio
-    build: .             # Construye la imagen usando el Dockerfile en el root
-    ports:
-      - "8000:8000"      # Expone el puerto 5000 local al 5000 del contenedor
+  app:
+    build: .
+    container_name: topobrainx
+    #command: python scripts/run_oinfo_sinfo_triplets_1subject.py
     volumes:
-      - ./app:/app/app   # Mapea los archivos locales para hot reload (dev)
+      - .:/app
+      - ./results:/app/results
     environment:
-      - FLASK_ENV=development  # Modo desarrollo
-      - FLASK_APP=app:create_app
+      JAVA_HOME: /usr/lib/jvm/java-21-openjdk-amd64
+
