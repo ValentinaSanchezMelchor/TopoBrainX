@@ -1,5 +1,5 @@
 ## TopoBrainX
-This repository will include the to experiment to transform fMRI (or any timeseries data) into a combinatorial complex.
+This repository will include the to experiment to transform fMRI (or any timeseries data) into a combinatorial complex. These are the initial experiments and figures (no recent updates). The final code will be updated and made public once the the paper 'The Human Brain as a Combinatorial Complex' is published.
 
 ## Project Structure
 
